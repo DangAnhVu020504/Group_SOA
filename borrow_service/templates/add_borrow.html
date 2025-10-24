@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Thêm mới lượt mượn</h3>
+<form method="POST" action="/borrow/add" class="mt-3">
+    <div class="mb-3">
+        <label class="form-label">Tên người mượn</label>
+        <input type="text" class="form-control" name="user_name" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tên sách</label>
+        <input type="text" class="form-control" name="book_title" value="{{ book_title }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Thêm</button>
+    <a href="/borrow/list" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}

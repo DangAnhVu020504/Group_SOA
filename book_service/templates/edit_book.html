@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Sửa thông tin sách</h3>
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Tựa sách</label>
+        <input type="text" class="form-control" name="title" value="{{ book.title }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tác giả</label>
+        <input type="text" class="form-control" name="author" value="{{ book.author }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Năm xuất bản</label>
+        <input type="number" class="form-control" name="year" value="{{ book.year }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <a href="/books" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}
