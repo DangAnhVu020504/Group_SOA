@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Danh sách mượn sách</h3>
+
+{% if borrows %}
+<table class="table table-bordered mt-3">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Tên người mượn</th>
+            <th>Tên sách</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in borrows %}
+        <tr>
+            <td>{{ b.id }}</td>
+            <td>{{ b.user_name }}</td>
+            <td>{{ b.book_title }}</td>
+            <td>
+                {% if b.status == 'borrowed' %}
+                <span class="badge bg-warning text-dark">Đang mượn</span>
+                {% else %}
+                <span class="badge bg-success">Đã trả</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if b.status == 'borrowed' %}
+                <a href="/borrow/{{ b.id }}/return" class="btn btn-success btn-sm">Trả sách</a>
+                {% else %}
+                <span class="text-muted">Hoàn tất</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="text-muted mt-3">Chưa có lượt mượn nào.</p>
+{% endif %}
+
+<a href="/borrow/add" class="btn btn-primary mt-3">+ Thêm lượt mượn</a>
+{% endblock %}

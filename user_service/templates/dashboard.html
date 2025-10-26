@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trang người dùng</title>
+    <style>
+        /* Reset cơ bản */
+        body,
+        h1,
+        h2,
+        p,
+        form {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Nền và căn giữa */
+        body {
+            background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container chung */
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        /* Tiêu đề */
+        h1,
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Input */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input:focus {
+            border-color: #6c63ff;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #574b90;
+        }
+
+        /* Link */
+        a {
+            color: #6c63ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Flash messages */
+        ul {
+            margin-top: 15px;
+            padding: 0;
+            list-style: none;
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Chào mừng bạn đến hệ thống thư viện!</h2>
+        <p>Bạn đang đăng nhập với tài khoản: <b>{{ session['username'] if 'username' in session else 'User' }}</b></p>
+
+        <a href="{{ url_for('user_bp.logout') }}">Đăng xuất</a>
+    </div>
+</body>
+
+</html>

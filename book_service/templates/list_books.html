@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Danh sách sách</h3>
+<table class="table table-bordered mt-3">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Tựa sách</th>
+            <th>Tác giả</th>
+            <th>Năm XB</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in books %}
+        <tr>
+            <td>{{ b.id }}</td>
+            <td>{{ b.title }}</td>
+            <td>{{ b.author }}</td>
+            <td>{{ b.year }}</td>
+            <td>
+                <a href="/books/{{ b.id }}/edit" class="btn btn-sm btn-primary">Sửa</a>
+                <form method="POST" action="/books/{{ b.id }}/delete" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                </form>
+                <a href="http://127.0.0.1:8000/borrows/add?book_title={{ b.title }}" 
+                    class="btn btn-sm btn-success">Mượn</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/books/add" class="btn btn-success">+ Thêm sách</a>
+{% endblock %}
